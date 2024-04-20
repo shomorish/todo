@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/models/app/app_state.dart';
 import 'package:todo/models/note/todo_provider.dart';
 import 'package:todo/pages/home/home.dart';
 import 'package:provider/provider.dart';
@@ -15,16 +16,14 @@ class ToDoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => AppState()),
         Provider.value(value: toDoProvider),
       ],
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
+          theme: context.select((AppState appState) => appState.theme),
           home: const HomePage(),
         );
       },
