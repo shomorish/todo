@@ -4,7 +4,7 @@ import 'package:todo/components/top_level_scaffold.dart';
 import 'package:todo/models/todo/todo.dart';
 import 'package:todo/pages/home/home.dart';
 import 'package:todo/pages/settings/settings.dart';
-import 'package:todo/pages/todo_details/todo_details.dart';
+import 'package:todo/pages/todo_details/todo_details_with_scaffold.dart';
 import 'package:todo/routing/top_level_destination.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -28,27 +28,22 @@ final router = GoRouter(
             );
           },
           routes: [
+            // New ToDo page.
             GoRoute(
               path: 'todo/new',
               parentNavigatorKey: _rootNavigatorKey,
               builder: (context, state) {
-                return Scaffold(
-                  appBar: AppBar(),
-                  body: ToDoDetailsPage(),
-                );
+                return ToDoDetailsPageWithScaffold();
               },
             ),
+
+            // ToDo editing page.
             GoRoute(
               path: 'todo/edit',
               parentNavigatorKey: _rootNavigatorKey,
               builder: (context, state) {
                 final toDo = state.extra as ToDo;
-                return Scaffold(
-                  appBar: AppBar(),
-                  body: ToDoDetailsPage(
-                    toDo: toDo,
-                  ),
-                );
+                return ToDoDetailsPageWithScaffold(toDo: toDo);
               },
             ),
           ],
