@@ -43,12 +43,12 @@ CREATE TABLE $tableToDo (
       tableToDo,
       const ToDo(
         'Add a todo',
-        '''
+        false,
+        details: '''
 1.Press the "+" button.
 2.Enter the title.
 3.Press the back button or press the save button.
 ''',
-        false,
       ).toMap(),
     );
 
@@ -56,11 +56,11 @@ CREATE TABLE $tableToDo (
       tableToDo,
       const ToDo(
         'Remove a todo',
-        '''
+        false,
+        details: '''
 1.Press the trash button.
 2.Tap "YES" in the dialog.
 ''',
-        false,
       ).toMap(),
     );
   }
@@ -89,5 +89,30 @@ CREATE TABLE $tableToDo (
       },
     );
     return controller.stream;
+  }
+
+  Future<ToDo> insertToDo(ToDo toDo) async {
+    final id = await _db.insert(
+      tableToDo,
+      toDo.toMap(),
+    );
+    return toDo.copy(id: id);
+  }
+
+  Future<int> updateToDo(ToDo toDo) async {
+    return await _db.update(
+      tableToDo,
+      toDo.toMap(),
+      where: '"$columnId" = ?',
+      whereArgs: [toDo.id],
+    );
+  }
+
+  Future<int> deleteToDo(int id) async {
+    return await _db.delete(
+      tableToDo,
+      where: '"$columnId" = ?',
+      whereArgs: [id],
+    );
   }
 }

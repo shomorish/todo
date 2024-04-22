@@ -3,15 +3,15 @@ import 'package:todo/models/todo/todo_provider.dart';
 class ToDo {
   final int? id;
   final String title;
-  final String details;
+  final String? details;
   final bool isCompleted;
 
   const ToDo(
     this.title,
-    this.details,
-    this.isCompleted, [
+    this.isCompleted, {
     this.id,
-  ]);
+    this.details,
+  });
 
   Map<String, Object?> toMap() {
     final map = <String, Object?>{
@@ -39,8 +39,8 @@ class ToDo {
   }) =>
       ToDo(
         title ?? this.title,
-        details ?? this.details,
         isCompleted ?? this.isCompleted,
-        id ?? this.id,
+        id: id ?? this.id,
+        details: details ?? this.details,
       );
 }
