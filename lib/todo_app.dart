@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/models/app/app_state.dart';
 import 'package:todo/models/note/todo_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/pages/home/home.dart';
+import 'package:todo/routing/router.dart';
 
 class ToDoApp extends StatelessWidget {
   final ToDoProvider toDoProvider;
@@ -21,14 +21,14 @@ class ToDoApp extends StatelessWidget {
         Provider.value(value: toDoProvider),
       ],
       builder: (context, child) {
-        return MaterialApp(
+        return MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'TODO',
           theme: context.select((AppState appState) => appState.theme),
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
-          home: const HomePage(),
+          routerConfig: router,
         );
       },
     );
