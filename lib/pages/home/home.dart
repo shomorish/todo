@@ -36,6 +36,7 @@ class HomePage extends StatelessWidget {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
+
                 case ConnectionState.active:
                 case ConnectionState.done:
                   // Content UI.
