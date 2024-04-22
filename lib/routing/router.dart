@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/components/top_level_scaffold.dart';
-import 'package:todo/models/note/todo.dart';
+import 'package:todo/models/todo/todo.dart';
 import 'package:todo/pages/home/home.dart';
 import 'package:todo/pages/settings/settings.dart';
 import 'package:todo/pages/todo_details/todo_details.dart';
@@ -32,7 +32,10 @@ final router = GoRouter(
               path: 'todo/new',
               parentNavigatorKey: _rootNavigatorKey,
               builder: (context, state) {
-                return ToDoDetailsPage();
+                return Scaffold(
+                  appBar: AppBar(),
+                  body: ToDoDetailsPage(),
+                );
               },
             ),
             GoRoute(
@@ -40,7 +43,12 @@ final router = GoRouter(
               parentNavigatorKey: _rootNavigatorKey,
               builder: (context, state) {
                 final toDo = state.extra as ToDo;
-                return ToDoDetailsPage();
+                return Scaffold(
+                  appBar: AppBar(),
+                  body: ToDoDetailsPage(
+                    toDo: toDo,
+                  ),
+                );
               },
             ),
           ],

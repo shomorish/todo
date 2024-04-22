@@ -4,8 +4,8 @@ import 'package:sized_context/sized_context.dart';
 import 'package:todo/components/todo_card.dart';
 import 'package:todo/components/todo_tile.dart';
 import 'package:todo/enums/window_size.dart';
-import 'package:todo/models/note/todo.dart';
-import 'package:todo/models/note/todo_provider.dart';
+import 'package:todo/models/todo/todo.dart';
+import 'package:todo/models/todo/todo_provider.dart';
 
 class HomePage extends StatelessWidget {
   final void Function(ToDo) onToDoTap;

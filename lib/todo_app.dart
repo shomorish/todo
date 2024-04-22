@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:todo/models/app/app_state.dart';
-import 'package:todo/models/note/todo_provider.dart';
+import 'package:todo/models/todo/todo_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/routing/router.dart';
 

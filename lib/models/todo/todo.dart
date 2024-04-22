@@ -1,4 +1,4 @@
-import 'package:todo/models/note/todo_provider.dart';
+import 'package:todo/models/todo/todo_provider.dart';
 
 class ToDo {
   final int? id;

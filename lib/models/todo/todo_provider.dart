@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:todo/models/note/todo.dart';
+import 'package:todo/models/todo/todo.dart';
 
 const tableToDo = 'todos';
 const columnId = '_id';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo/models/note/todo.dart';
+import 'package:todo/models/todo/todo.dart';
 
 class ToDoDetailsPage extends StatelessWidget {
   final ToDo? toDo;
