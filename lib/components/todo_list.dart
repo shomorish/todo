@@ -35,8 +35,8 @@ class ToDoList extends StatelessWidget {
         return GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
-            mainAxisSpacing: 4,
-            crossAxisSpacing: 4,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8,
           ),
           itemCount: toDoList.length,
           itemBuilder: (context, index) {
