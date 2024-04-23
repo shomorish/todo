@@ -43,4 +43,16 @@ class ToDo {
         id: id ?? this.id,
         details: details ?? this.details,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      other is ToDo &&
+      other.runtimeType == runtimeType &&
+      other.id == id &&
+      other.title == title &&
+      other.details == details &&
+      other.isCompleted == isCompleted;
+
+  @override
+  int get hashCode => id.hashCode;
 }
