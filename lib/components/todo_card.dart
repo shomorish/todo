@@ -22,7 +22,10 @@ class ToDoCard extends StatelessWidget {
       child: Ink(
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.transparent.withAlpha(255 ~/ 3)),
+          border: Border.all(
+            color:
+                Theme.of(context).colorScheme.onBackground.withAlpha(255 ~/ 3),
+          ),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -38,6 +41,8 @@ class ToDoCard extends StatelessWidget {
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
                 ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             if (details != null)
@@ -45,7 +50,10 @@ class ToDoCard extends StatelessWidget {
                 child: Text(
                   details!,
                   style: TextStyle(
-                    color: Colors.transparent.withAlpha(255 ~/ 2),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurface
+                        .withAlpha(255 ~/ 2),
                   ),
                 ),
               ),
