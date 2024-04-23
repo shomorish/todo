@@ -73,10 +73,13 @@ class ToDoDetailsPageWithScaffold extends StatelessWidget {
             },
           );
         },
-        child: ToDoDetailsPage(
-          toDo: toDo,
-          titleController: titleController,
-          detailsController: detailsController,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ToDoDetailsPage(
+            toDo: toDo,
+            titleController: titleController,
+            detailsController: detailsController,
+          ),
         ),
       ),
     );
