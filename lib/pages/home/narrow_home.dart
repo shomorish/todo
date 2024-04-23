@@ -36,9 +36,12 @@ class NarrowHomeLayout extends StatelessWidget {
       );
     } else {
       children.add(
-        ToDoList(
-          toDoList: toDoList,
-          onToDoTap: onToDoTap,
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: ToDoList(
+            toDoList: toDoList,
+            onToDoTap: onToDoTap,
+          ),
         ),
       );
     }
