@@ -16,6 +16,7 @@ final router = GoRouter(
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       routes: [
+        // Home page.
         GoRoute(
           path: TopLevelDestination.home.goRoutePath,
           parentNavigatorKey: _shellNavigatorKey,
