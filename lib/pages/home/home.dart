@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:sized_context/sized_context.dart';
-import 'package:todo/components/todo_card.dart';
-import 'package:todo/components/todo_tile.dart';
 import 'package:todo/enums/window_size.dart';
 import 'package:todo/models/todo/todo.dart';
 import 'package:todo/models/todo/todo_provider.dart';
@@ -122,53 +120,5 @@ class _HomePageState extends State<HomePage> {
         }
       },
     );
-  }
-}
-
-class ToDoListContent extends StatelessWidget {
-  final List<ToDo> toDoList;
-  final void Function(ToDo) onToDoTap;
-
-  const ToDoListContent({
-    super.key,
-    required this.toDoList,
-    required this.onToDoTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final windowSizeType = WindowSizeType.fromWidth(context.widthPx);
-    switch (windowSizeType) {
-      case WindowSizeType.compact:
-      case WindowSizeType.expanded:
-        return ListView.builder(
-          itemCount: toDoList.length,
-          itemBuilder: (context, index) {
-            final toDo = toDoList[index];
-            return ToDoTile(
-              title: toDo.title,
-              onTap: () => onToDoTap(toDo),
-            );
-          },
-        );
-      case WindowSizeType.medium:
-        return GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            mainAxisSpacing: 4,
-            crossAxisSpacing: 4,
-          ),
-          itemCount: toDoList.length,
-          itemBuilder: (context, index) {
-            final toDo = toDoList[index];
-            return ToDoCard(
-              title: toDo.title,
-              details: toDo.details,
-              isCompleted: toDo.isCompleted,
-              onTap: () => onToDoTap(toDo),
-            );
-          },
-        );
-    }
   }
 }

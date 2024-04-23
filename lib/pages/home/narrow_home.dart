@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo/components/todo_list.dart';
 import 'package:todo/models/todo/todo.dart';
-import 'package:todo/pages/home/home.dart';
 
 class NarrowHomeLayout extends StatelessWidget {
   final List<ToDo> toDoList;
@@ -36,7 +36,7 @@ class NarrowHomeLayout extends StatelessWidget {
       );
     } else {
       children.add(
-        ToDoListContent(
+        ToDoList(
           toDoList: toDoList,
           onToDoTap: onToDoTap,
         ),
