@@ -7,16 +7,17 @@ import 'package:todo/models/todo/todo.dart';
 import 'package:todo/models/todo/todo_provider.dart';
 import 'package:todo/pages/home/narrow_home.dart';
 import 'package:todo/pages/home/wide_home.dart';
-import 'package:todo/utils/list.dart';
 
 class HomePage extends StatefulWidget {
-  final void Function(ToDo) onToDoTap;
-  final VoidCallback onAdd;
+  final List<ToDo> toDoList;
+  final bool isLoading;
+  final bool isError;
 
   const HomePage({
     super.key,
-    required this.onToDoTap,
-    required this.onAdd,
+    required this.toDoList,
+    required this.isLoading,
+    required this.isError,
   });
 
   @override
@@ -84,41 +85,32 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<ToDo>>(
-      stream: Provider.of<ToDoProvider>(context)
-          .observeToDos()
-          .distinct((prev, next) => equalsList(prev, next)),
-      builder: (context, snapshot) {
-        final windowSizeType = WindowSizeType.fromWidth(context.widthPx);
-        if (windowSizeType == WindowSizeType.expanded) {
-          return ValueListenableBuilder<TextEditingValue>(
-            valueListenable: titleController,
-            builder: (context, value, child) {
-              return WideHomeLayout(
-                toDoList: snapshot.data ?? [],
-                selectedToDo: selectedToDo,
-                isLoading: snapshot.connectionState == ConnectionState.none ||
-                    snapshot.connectionState == ConnectionState.waiting,
-                isError: snapshot.hasError,
-                onToDoTap: openToDo,
-                onAdd: createNewToDo,
-                titleController: titleController,
-                detailsController: detailsController,
-                onSave: value.text.isNotEmpty ? saveToDo : null,
-              );
-            },
+    final windowSizeType = WindowSizeType.fromWidth(context.widthPx);
+    if (windowSizeType == WindowSizeType.expanded) {
+      return ValueListenableBuilder<TextEditingValue>(
+        valueListenable: titleController,
+        builder: (context, value, child) {
+          return WideHomeLayout(
+            toDoList: widget.toDoList,
+            selectedToDo: selectedToDo,
+            isLoading: widget.isLoading,
+            isError: widget.isError,
+            onToDoTap: openToDo,
+            onAdd: createNewToDo,
+            titleController: titleController,
+            detailsController: detailsController,
+            onSave: value.text.isNotEmpty ? saveToDo : null,
           );
-        } else {
-          return NarrowHomeLayout(
-            toDoList: snapshot.data ?? [],
-            isLoading: snapshot.connectionState == ConnectionState.none ||
-                snapshot.connectionState == ConnectionState.waiting,
-            isError: snapshot.hasError,
-            onToDoTap: (toDo) => context.go('/todo/edit', extra: toDo),
-            onAdd: () => context.go('/todo/new'),
-          );
-        }
-      },
-    );
+        },
+      );
+    } else {
+      return NarrowHomeLayout(
+        toDoList: widget.toDoList,
+        isLoading: widget.isLoading,
+        isError: widget.isError,
+        onToDoTap: (toDo) => context.go('/todo/edit', extra: toDo),
+        onAdd: () => context.go('/todo/new'),
+      );
+    }
   }
 }

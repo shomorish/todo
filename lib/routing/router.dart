@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/components/top_level_scaffold.dart';
 import 'package:todo/models/todo/todo.dart';
-import 'package:todo/pages/home/home.dart';
+import 'package:todo/pages/home/home_with_stream.dart';
 import 'package:todo/pages/settings/settings.dart';
 import 'package:todo/pages/todo_details/todo_details_with_scaffold.dart';
 import 'package:todo/routing/top_level_destination.dart';
@@ -21,11 +21,8 @@ final router = GoRouter(
           path: TopLevelDestination.home.goRoutePath,
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) {
-            return NoTransitionPage(
-              child: HomePage(
-                onToDoTap: (toDo) => context.go('/todo/edit', extra: toDo),
-                onAdd: () => context.go('/todo/new'),
-              ),
+            return const NoTransitionPage(
+              child: HomePageWithStream(),
             );
           },
           routes: [
