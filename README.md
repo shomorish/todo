@@ -1,16 +1,18 @@
-# todo
+# TODO
 
-A new Flutter project.
+Flutterを使用して開発した、TODOアプリ。
 
-## Getting Started
+今回のアプリ開発は、「多画面対応」を意識して行いました。
 
-This project is a starting point for a Flutter application.
+## スクリーンショット
 
-A few resources to get you started if this is your first Flutter project:
+![小さい画面用のレイアウト](screenshots/small_layout.png)![中くらいの画面用のレイアウト](screenshots/medium_layout.png)![大きい画面用のレイアウト](screenshots/expanded_layout.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 動画
+<video src="movies/todo 2024-05-07 13-19-18.mp4" controls="true"></video>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+下記のZIPを展開すると実行ファイル（exe）があります。（Windows x64向け）
+> bin\windows.zip
+
+アプリを実行すると、アプリデータの保存のために、下記のDBファイルが作成されます。
+> C:\Users\ ___[user-name]___ \Documents\databases\todo.db
