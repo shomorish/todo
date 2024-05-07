@@ -14,7 +14,7 @@ Flutterを使用して開発した、TODOアプリ。
 ![動画](movies/output.gif)
 
 下記のZIPを展開すると実行ファイル（exe）があります。（Windows x64向け）
-> bin\windows.zip
+> zip\windows.zip
 
 アプリを実行すると、アプリデータの保存のために、下記のDBファイルが作成されます。
 > C:\Users\ ___[user-name]___ \Documents\databases\todo.db
