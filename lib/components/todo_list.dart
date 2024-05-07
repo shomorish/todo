@@ -48,6 +48,7 @@ class ToDoList extends StatelessWidget {
               title: toDo.title,
               details: toDo.details,
               isCompleted: toDo.isCompleted,
+              onDelete: () => onToDoDelete(toDo),
               onTap: () => onToDoTap(toDo),
             );
           },
