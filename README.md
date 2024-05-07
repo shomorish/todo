@@ -6,7 +6,9 @@ Flutterを使用して開発した、TODOアプリ。
 
 ## スクリーンショット
 
-![小さい画面用のレイアウト](screenshots/small_layout.png)![中くらいの画面用のレイアウト](screenshots/medium_layout.png)![大きい画面用のレイアウト](screenshots/expanded_layout.png)
+<img alt="小さい画面用のレイアウト" src="screenshots/small_layout.png" width="200">
+<img alt="中くらいの画面用のレイアウト" src="screenshots/medium_layout.png" width="300">
+<img alt="大きい画面用のレイアウト" src="screenshots/expanded_layout.png" width="600">
 
 ## 動画
 ![動画](movies/output.gif)
