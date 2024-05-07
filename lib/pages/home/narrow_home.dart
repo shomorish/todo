@@ -6,6 +6,7 @@ class NarrowHomeLayout extends StatelessWidget {
   final List<ToDo> toDoList;
   final bool isLoading;
   final bool isError;
+  final void Function(ToDo) onToDoDelete;
   final void Function(ToDo) onToDoTap;
   final void Function() onAdd;
 
@@ -14,6 +15,7 @@ class NarrowHomeLayout extends StatelessWidget {
     required this.toDoList,
     this.isLoading = false,
     this.isError = false,
+    required this.onToDoDelete,
     required this.onToDoTap,
     required this.onAdd,
   });
@@ -40,6 +42,7 @@ class NarrowHomeLayout extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: ToDoList(
             toDoList: toDoList,
+            onToDoDelete: onToDoDelete,
             onToDoTap: onToDoTap,
           ),
         ),

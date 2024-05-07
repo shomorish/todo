@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class ToDoTile extends StatelessWidget {
   final String title;
+  final void Function() onDelete;
   final void Function() onTap;
 
   const ToDoTile({
     super.key,
     required this.title,
+    required this.onDelete,
     required this.onTap,
   });
 
@@ -18,6 +20,7 @@ class ToDoTile extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
+      trailing: IconButton(onPressed: onDelete, icon: const Icon(Icons.delete)),
       onTap: onTap,
     );
   }

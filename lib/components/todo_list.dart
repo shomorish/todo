@@ -7,11 +7,13 @@ import 'package:todo/models/todo/todo.dart';
 
 class ToDoList extends StatelessWidget {
   final List<ToDo> toDoList;
+  final void Function(ToDo) onToDoDelete;
   final void Function(ToDo) onToDoTap;
 
   const ToDoList({
     super.key,
     required this.toDoList,
+    required this.onToDoDelete,
     required this.onToDoTap,
   });
 
@@ -27,6 +29,7 @@ class ToDoList extends StatelessWidget {
             final toDo = toDoList[index];
             return ToDoTile(
               title: toDo.title,
+              onDelete: () => onToDoDelete(toDo),
               onTap: () => onToDoTap(toDo),
             );
           },

@@ -10,6 +10,7 @@ class WideHomeLayout extends StatelessWidget {
   final ToDo? selectedToDo;
   final bool isLoading;
   final bool isError;
+  final void Function(ToDo) onToDoDelete;
   final void Function(ToDo) onToDoTap;
   final void Function() onAdd;
 
@@ -23,6 +24,7 @@ class WideHomeLayout extends StatelessWidget {
     this.selectedToDo,
     required this.isLoading,
     required this.isError,
+    required this.onToDoDelete,
     required this.onToDoTap,
     required this.onAdd,
     required this.titleController,
@@ -40,6 +42,7 @@ class WideHomeLayout extends StatelessWidget {
             toDoList: toDoList,
             isLoading: isLoading,
             isError: isError,
+            onToDoDelete: onToDoDelete,
             onToDoTap: onToDoTap,
             onAdd: onAdd,
           ),

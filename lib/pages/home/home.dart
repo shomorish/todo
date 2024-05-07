@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:sized_context/sized_context.dart';
+import 'package:todo/components/dialogs/yes_no_dialog.dart';
 import 'package:todo/enums/window_size.dart';
 import 'package:todo/models/todo/todo.dart';
 import 'package:todo/models/todo/todo_provider.dart';
@@ -83,6 +84,29 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void deleteToDo(ToDo toDo) async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return YesNoDialog(
+          content: const Text("Do you want to delete it?"),
+          onYes: () async {
+            await context.read<ToDoProvider>().deleteToDo(toDo.id!);
+            if (selectedToDo?.id == toDo.id) {
+              selectedToDo = null;
+              titleController.clear();
+              detailsController.clear();
+            }
+            if (context.mounted) Navigator.pop(context);
+          },
+          onNo: () {
+            Navigator.pop(context);
+          },
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final windowSizeType = WindowSizeType.fromWidth(context.widthPx);
@@ -95,6 +119,7 @@ class _HomePageState extends State<HomePage> {
             selectedToDo: selectedToDo,
             isLoading: widget.isLoading,
             isError: widget.isError,
+            onToDoDelete: deleteToDo,
             onToDoTap: openToDo,
             onAdd: createNewToDo,
             titleController: titleController,
@@ -108,6 +133,7 @@ class _HomePageState extends State<HomePage> {
         toDoList: widget.toDoList,
         isLoading: widget.isLoading,
         isError: widget.isError,
+        onToDoDelete: deleteToDo,
         onToDoTap: (toDo) => context.go('/todo/edit', extra: toDo),
         onAdd: () => context.go('/todo/new'),
       );
