@@ -9,7 +9,7 @@ Flutterを使用して開発した、TODOアプリ。
 ![小さい画面用のレイアウト](screenshots/small_layout.png)![中くらいの画面用のレイアウト](screenshots/medium_layout.png)![大きい画面用のレイアウト](screenshots/expanded_layout.png)
 
 ## 動画
-<video src="movies/todo 2024-05-07 13-19-18.mp4" controls="true"></video>
+![動画](movies/output.gif)
 
 下記のZIPを展開すると実行ファイル（exe）があります。（Windows x64向け）
 > bin\windows.zip
